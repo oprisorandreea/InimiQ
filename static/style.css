@@ -1,0 +1,143 @@
+body {
+    background: linear-gradient(135deg, #3b0f9d, #9b00b8, #1d2aff);
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    padding: 30px;
+    width: 100%;
+    max-width: 450px;
+    box-shadow: 0 0 30px rgba(0,0,0,0.2);
+}
+
+.form-control {
+    background: rgba(255,255,255,0.1);
+    border: none;
+    color: white;
+    border-radius: 12px;
+}
+
+.form-control::placeholder {
+    color: #cccccc;
+}
+
+.btn-success {
+    background: linear-gradient(135deg, #00c3ff, #6e00ff);
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+}
+
+.btn-success:hover {
+    background: linear-gradient(135deg, #00aaff, #5500cc);
+}
+
+.btn-primary {
+    background: #007bff;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+}
+
+.btn-primary:hover {
+    background: #0056b3;
+}
+
+a {
+    color: #ffccff;
+}
+
+img.logo {
+    max-width: 100px;
+    margin-bottom: 20px;
+}
+
+.validation {
+    font-size: 0.8em;
+    color: #ffcccc;
+    display: none;
+}
+
+.logo-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.logo-title .logo {
+    max-width: 60px;
+    margin-bottom: 0;
+}
+
+.app-name {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: white;
+    margin: 0;
+}
+
+.slogan {
+    font-size: 1.2rem;
+    color: #ffccff;
+    font-weight: 400;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.chart-container {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 15px;
+    padding: 20px;
+    margin: 0 auto 30px auto;
+    max-width: 600px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+}
+
+.legend-section {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 20px;
+    border-radius: 15px;
+    max-width: 600px;
+    margin: 30px auto;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    color: #f1f1f1;
+}
+
+.legend-box p {
+    margin: 8px 0;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    display: flex;
+    align-items: center;
+}
+
+.legend-dot {
+    width: 14px;
+    height: 14px;
+    display: inline-block;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.legend-dot.high {
+    background-color: #ff4c4c;
+}
+
+.legend-dot.moderate {
+    background-color: #ffc107;
+}
+
+.legend-dot.low {
+    background-color: #28a745;
+}

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <title>Istoric evaluări - InimiQ</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+   
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="card text-center">
+    <div class="logo-title">
+        <img src="{{ url_for('static', filename='img/LOGO.png') }}" alt="Logo" class="logo">
+        <h1 class="app-name">InimiQ</h1>
+    </div>
+    <h4 class="mt-3 mb-4">Istoricul evaluărilor tale</h4>
+
+    <div class="container">
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover table-striped bg-white">
+                <thead class="thead-light">
+                    <tr>
+                        <th>Data</th>
+                        <th>Vârstă</th>
+                        <th>Sex</th>
+                        <th>Durere</th>
+                        <th>Angină Exercițiu</th>
+                        <th>Glicemie?</th>
+                        <th>Tensiune</th>
+                        <th>Puls max</th>
+                        <th>Risc (%)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for p in predictions %}
+                    <tr>
+                        <td>{{ p.created_at.strftime('%Y-%m-%d %H:%M') }}</td>
+                        <td>{{ p.age }}</td>
+                        <td>{{ 'M' if p.sex == 1 else 'F' }}</td>
+                        <td>{{ p.chest_pain }}</td>
+                        <td>{{ p.exercise_angina }}</td>
+                        <td>{{ 'Da' if p.fasting_bs else 'Nu' }}</td>
+                        <td>{{ p.resting_bp }}</td>
+                        <td>{{ p.max_hr }}</td>
+                        <td>{{ p.score }}%</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        {% if scores and labels %}
+        <h4 class="mt-5 mb-3 text-white">Evoluția scorului cardiac în timp</h4>
+        <div class="chart-container">
+            <canvas id="riskChart"></canvas>
+        </div>
+
+        <div class="legend-section mt-4">
+            <h5 class="text-white text-center mb-3">Legendă interpretare scor</h5>
+            <div class="legend-box">
+                <p><span class="legend-dot high"></span> <strong>&gt; 70%</strong> – Risc mare: consultați urgent un cardiolog</p>
+                <p><span class="legend-dot moderate"></span> <strong>50-69%</strong> – Risc moderat: evaluare recomandată</p>
+                <p><span class="legend-dot low"></span> <strong>&lt; 50%</strong> – Risc redus: monitorizare periodică</p>
+            </div>
+        </div>
+        {% endif %}
+
+        <a href="{{ url_for('home') }}" class="btn btn-outline-primary mt-4">Înapoi la Acasă</a>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const ctx = document.getElementById('riskChart')?.getContext('2d');
+    if (ctx) {
+        const chart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: JSON.parse('{{ labels|tojson|safe }}'),
+                datasets: [{
+                    label: 'Scor risc cardiac (%)',
+                    data: JSON.parse('{{ scores|tojson|safe }}'),
+                    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                    borderColor: '#00ffff',
+                    borderWidth: 2,
+                    pointBackgroundColor: '#ffffff',
+                    pointBorderColor: '#00ffff',
+                    pointRadius: 4,
+                    fill: true,
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: '#ffffff',
+                            font: { size: 14 }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100,
+                        ticks: {
+                            color: '#ffffff'
+                        },
+                        title: {
+                            display: true,
+                            text: 'Scor (%)',
+                            color: '#ffffff'
+                        }
+                    },
+                    x: {
+                        ticks: {
+                            color: '#ffffff'
+                        },
+                        title: {
+                            display: true,
+                            text: 'Dată',
+                            color: '#ffffff'
+                        }
+                    }
+                }
+            }
+        });
+    }
+</script>
+</body>
+</html>

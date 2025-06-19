@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <title>Acasă - InimiQ</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+   
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="card text-center">
+        <div class="logo-title">
+            <img src="{{ url_for('static', filename='img/LOGO.png') }}" alt="Logo" class="logo">
+            <h1 class="app-name">InimiQ</h1>
+        </div>
+
+        <h2 class="slogan">Bine ai revenit, {{ username }}!</h2>
+        <p class="mb-4">Grijă inteligentă pentru inima ta.</p>
+
+        <div class="d-flex justify-content-center flex-wrap">
+            <a href="{{ url_for('predict') }}" class="btn btn-success m-2">🩺 Începe o evaluare</a>
+            <a href="{{ url_for('istoric') }}" class="btn btn-info m-2">📊 Vezi istoricul evaluărilor</a>
+            <a href="{{ url_for('logout') }}" class="btn btn-outline-danger m-2">🔓 Delogare</a>
+        </div>
+    </div>
+</body>
+</html>

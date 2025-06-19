@@ -1,0 +1,36 @@
+<!-- result.html -->
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <title>Rezultat evaluare - InimiQ</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="card text-center">
+    <div class="logo-title">
+        <img src="{{ url_for('static', filename='img/LOGO.png') }}" alt="Logo" class="logo">
+        <h1 class="app-name">InimiQ</h1>
+    </div>
+
+    <h4 class="mt-3">Rezultatul analizei tale</h4>
+    <div class="alert alert-info mt-3 mx-5">
+        {{ prediction }}
+    </div>
+
+    {% if recommendation %}
+    <div class="alert alert-warning mx-5">
+        {{ recommendation }}
+    </div>
+    {% endif %}
+
+    <div class="mt-3">
+        <a href="{{ url_for('predict') }}" class="btn btn-outline-primary">Evaluează din nou</a>
+        <a href="{{ url_for('istoric') }}" class="btn btn-outline-secondary">Vezi istoricul</a>
+    </div>
+</div>
+</body>
+</html>

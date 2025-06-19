@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <title>Evaluare cardiacă - InimiQ</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="card text-center">
+    <div class="logo-title">
+        <img src="{{ url_for('static', filename='img/LOGO.png') }}" alt="Logo" class="logo">
+        <h1 class="app-name">InimiQ</h1>
+    </div>
+    <h4 class="mb-3">Completează datele pentru evaluare cardiacă</h4>
+
+    <form method="POST" class="px-4">
+        <div class="form-group text-left">
+            <label>Vârstă</label>
+            <input type="number" class="form-control" name="age" required>
+        </div>
+
+        <div class="form-group text-left">
+            <label>Sex</label>
+            <select class="form-control" name="sex" required>
+                <option value="1">Masculin</option>
+                <option value="0">Feminin</option>
+            </select>
+            <small><button type="button" class="btn btn-sm btn-outline-secondary" data-toggle="tooltip" title="Sexul biologic al pacientului.">i</button></small>
+        </div>
+
+        <div class="form-group text-left">
+            <label>Tipul durerii în piept</label>
+            <select class="form-control" name="cp">
+                <option value="ATA">Angină tipică</option>
+                <option value="NAP">Angină atipică</option>
+                <option value="ASY">Asimptomatic</option>
+                <option value="TA">Alt tip</option>
+            </select>
+            <small><button type="button" class="btn btn-sm btn-outline-secondary" data-toggle="tooltip" title="Tipul durerii resimțite în piept. Poate indica boală coronariană.">i</button></small>
+        </div>
+
+        <div class="form-group text-left">
+            <label>Angină în timpul exercițiului fizic?</label>
+            <select class="form-control" name="exang">
+                <option value="Y">Da</option>
+                <option value="N">Nu</option>
+            </select>
+            <small><button type="button" class="btn btn-sm btn-outline-secondary" data-toggle="tooltip" title="Durere sau disconfort în piept în timpul efortului fizic.">i</button></small>
+        </div>
+
+        <div class="form-group text-left">
+            <label>Glicemie pe nemâncate &gt; 120 mg/dL?</label>
+            <select class="form-control" name="fbs">
+                <option value="1">Da</option>
+                <option value="0">Nu</option>
+            </select>
+            <small><button type="button" class="btn btn-sm btn-outline-secondary" data-toggle="tooltip" title="Nivelul zahărului în sânge înainte de micul dejun. Peste 120 indică risc.">i</button></small>
+        </div>
+
+        <div class="form-group text-left">
+            <label>Tensiune arterială de repaus (mmHg)</label>
+            <input type="number" class="form-control" name="restbp" required>
+            <small><button type="button" class="btn btn-sm btn-outline-secondary" data-toggle="tooltip" title="Presiunea sângelui măsurată în repaus. Valorile normale: 120/80 mmHg.">i</button></small>
+        </div>
+
+        <div class="form-group text-left">
+            <label>Frecvența cardiacă maximă (bpm)</label>
+            <input type="number" class="form-control" name="maxhr" required>
+            <small><button type="button" class="btn btn-sm btn-outline-secondary" data-toggle="tooltip" title="Ritm cardiac maxim estimat: 220 - vârsta. Folosit în testele de efort.">i</button></small>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block mt-3">Calculează riscul</button>
+    </form>
+
+    <div class="mt-3">
+        <a href="{{ url_for('home') }}">Înapoi la acasă</a>
+    </div>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>
+</body>
+</html>
