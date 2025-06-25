@@ -7,7 +7,7 @@ InimiQ este o aplicație web realizată cu Flask, care estimează riscul de afec
 Codul sursă complet este disponibil la:  
 https://github.com/oprisorandreea/InimiQ
 
-Repository-ul conține doar codul sursă. Fișierele binare compilate (`model.pkl`, `users.db`) sunt generate local automat și NU sunt incluse. Repository-ul va fi partajat intern coordonatorului și comisiei de evaluare la cerere.
+Repository-ul conține doar codul sursă. Fișierele binare compilate (`model.pkl`, `users.db`) sunt generate local automat și NU sunt incluse. 
 
 ## Pași de compilare (generare model)
 
