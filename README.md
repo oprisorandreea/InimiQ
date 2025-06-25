@@ -65,7 +65,6 @@ InimiQ este o aplicație web dezvoltată cu Flask, care permite estimarea riscul
 ------------------------
 Acest repository Git conține întregul cod sursă al aplicației, cu excepția fișierelor binare generate local (model.pkl, users.db). Pentru evaluare, aplicația se poate rula integral în regim local, urmând pașii descriși în secțiunea 3.
 
-Repository-ul poate fi partajat membrilor comisiei de evaluare și coordonatorului la cerere.
 
 ---
 
